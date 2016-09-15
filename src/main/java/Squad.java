@@ -21,12 +21,10 @@ public class Squad {
     mHeroes = new ArrayList<Hero>();
   }
 
-  public void squadStats () {
-    for(Hero h : mHeroes) {
-      mSquadAttack += h.getAttack();
-      mSquadDefense += h.getDefense();
-      mSquadHealth += h.getHealth();
-    }
+  public void squadStats (Hero h) {
+    mSquadAttack += h.getAttack();
+    mSquadDefense += h.getDefense();
+    mSquadHealth += h.getHealth();
   }
 
   public String getSquadName() {
