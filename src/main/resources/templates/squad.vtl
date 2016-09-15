@@ -11,7 +11,11 @@
   #else
     <h3>No Heroes!</h3>
   #end
-  <a href="/squads/$squad.getId()/heroes/new">Add a new Hero</a>
+  #if ($squad.maxCheck())
+    <h4>Your squad is full!</h4>
+  #else
+    <a href="/squads/$squad.getId()/heroes/new">Add a new Hero</a>
+  #end
 #else
   <em><p>Oops! We can't seem to find that Squad.</p></em>
 #end
