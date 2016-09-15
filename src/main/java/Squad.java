@@ -5,6 +5,9 @@ public class Squad {
   private String mSquadName;
   private String mCause;
   private int mMax;
+  private int mSquadAttack;
+  private int mSquadDefense;
+  private int mSquadHealth;
   private static List<Squad> instances = new ArrayList<Squad>();
   private int mId;
   private List<Hero> mHeroes;
@@ -12,10 +15,18 @@ public class Squad {
   public Squad(String squadName, String cause) {
     mSquadName = squadName;
     mCause = cause;
-    mMax = 2;
+    mMax = 4;
     mId = instances.size();
     instances.add(this);
     mHeroes = new ArrayList<Hero>();
+  }
+
+  public void squadStats () {
+    for(Hero h : mHeroes) {
+      mSquadAttack += h.getAttack();
+      mSquadDefense += h.getDefense();
+      mSquadHealth += h.getHealth();
+    }
   }
 
   public String getSquadName() {
@@ -32,6 +43,18 @@ public class Squad {
 
   public int getMax() {
     return mMax;
+  }
+
+  public int getSquadAttack() {
+    return mSquadAttack;
+  }
+
+  public int getSquadDefense() {
+    return mSquadDefense;
+  }
+
+  public int getSquadHealth() {
+    return mSquadHealth;
   }
 
   public boolean maxCheck() {

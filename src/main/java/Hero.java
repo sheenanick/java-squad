@@ -6,6 +6,9 @@ public class Hero {
   private int mAge;
   private String mPower;
   private String mWeakness;
+  private int mAttack;
+  private int mDefense;
+  private int mHealth;
   private static List<Hero> instances = new ArrayList<Hero>();
   private int mId;
 
@@ -14,8 +17,25 @@ public class Hero {
     mAge = age;
     mPower = power;
     mWeakness = weakness;
+    mAttack = 0;
+    mDefense = 0;
+    mHealth = 25;
     mId = instances.size();
     instances.add(this);
+  }
+
+  public void fightStats () {
+    if (mPower.equals("flying")) {
+      mAttack += 2;
+      mDefense += 3;
+    } else if (mPower.equals("psychic")) {
+      mAttack += 4;
+      mDefense += 1;
+    } else if (mPower.equals("healing")) {
+      mDefense += 5;
+    } else if (mPower.equals("laser")) {
+      mAttack += 5;
+    }
   }
 
   public String getName() {
@@ -36,6 +56,18 @@ public class Hero {
 
   public int getId() {
     return mId;
+  }
+
+  public int getAttack() {
+    return mAttack;
+  }
+
+  public int getDefense() {
+    return mDefense;
+  }
+
+  public int getHealth() {
+    return mHealth;
   }
 
   public static void clear() {

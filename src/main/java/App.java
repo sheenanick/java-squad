@@ -40,6 +40,7 @@ public class App {
     get("/squads/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Squad userSquad = Squad.find(Integer.parseInt(request.params(":id")));
+      userSquad.squadStats();
       model.put("squad", userSquad);
       model.put("template", "templates/squad.vtl");
       return new ModelAndView(model, layout);
@@ -61,12 +62,26 @@ public class App {
       String power = request.queryParams("power");
       String weakness = request.queryParams("weakness");
       Hero userHero = new Hero(name, age, power, weakness);
+      userHero.fightStats();
       squad.addHero(userHero);
       model.put("template", "templates/hero-success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/heroes", (request, response) -> {
+     Map<String, Object> model = new HashMap<String, Object>();
+     model.put("heroes", Hero.all());
+     model.put("template", "templates/heroes.vtl");
+     return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
+    get("/heroes/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Hero userHero = Hero.find(Integer.parseInt(request.params(":id")));
+      model.put("heroes", userHero);
+      model.put("template", "templates/hero.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
   }
 }
