@@ -6,14 +6,14 @@ public class Squad {
   private String mCause;
   private static List<Squad> instances = new ArrayList<Squad>();
   private int mId;
-  private List<Hero> mHeros;
+  private List<Hero> mHeroes;
 
   public Squad(String squadName, String cause) {
     mSquadName = squadName;
     mCause = cause;
     mId = instances.size();
     instances.add(this);
-    mHeros = new ArrayList<Hero>();
+    mHeroes = new ArrayList<Hero>();
   }
 
   public String getSquadName() {
@@ -26,6 +26,10 @@ public class Squad {
 
   public int getId() {
     return mId;
+  }
+
+  public List<Hero> getHeroes() {
+    return mHeroes;
   }
 
   public static void clear() {
