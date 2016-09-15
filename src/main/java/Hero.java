@@ -38,6 +38,25 @@ public class Hero {
     }
   }
 
+  public String getPic () {
+
+    if (mWeakness.equals("kryptonite") && mPower.equals("flying")) {
+      return "../images/superman.jpg";
+    } else if (mPower.equals("flying")) {
+      return "../images/1.jpg";
+    } else if (mPower.equals("healing")){
+      return "../images/2.jpg";
+    } else if (mPower.equals("laser")) {
+      return "../images/cyclops.jpg";
+    } else if (mWeakness.equals("hisSon")) {
+      return "../images/darth.jpg";
+    } else if (mWeakness.equals("dehydration")) {
+      return "../images/aquaman.jpg";
+    } else {
+      return "../images/greenlantern.jpg";
+    }
+  }
+
   public String getName() {
     return mName;
   }
